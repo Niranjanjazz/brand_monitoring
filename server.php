@@ -14,7 +14,7 @@ $Card_Number = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'sentimental_analysisdb');
+$db = mysqli_connect('localhost', 'root', '', 'db_name');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
@@ -125,11 +125,11 @@ if (isset($_POST['product_reg_user'])) {
   	mysqli_query($db, $query);
   	$_SESSION['Product_Name'] = $Product_Name;
   	$_SESSION['success'] = "You have registerd the product in Brand360";
-    chdir('C:\Users\Niranjan\PycharmProjects\Amazon_review_scraper\amazon_reviews');
+    chdir('executing_crawler');
     shell_exec('scrapy crawl amazon_scrapper');
-    $command = escapeshellcmd('python C:\Users\Niranjan\PycharmProjects\Amazon_review_scraper\amazon_reviews\amazon_nlp_model.py "' .$Product_Name.'"');
+    $command = escapeshellcmd('python calling_nlp_model "' .$Product_Name.'"');
     $output = shell_exec($command);
-    $twitter_command = escapeshellcmd('python C:\Users\Niranjan\PycharmProjects\Amazon_review_scraper\amazon_reviews\twitter.py "' .$Product_Name.'" "' .$Twitter_Hashtags.'"');
+    $twitter_command = escapeshellcmd('python executing_twitter_code "' .$Product_Name.'" "' .$Twitter_Hashtags.'"');
     $twitter_output = shell_exec($twitter_command);
   
 
@@ -175,11 +175,11 @@ if (isset($_POST['free_product_reg_user'])) {
   	mysqli_query($db, $query);
   	$_SESSION['Product_Name'] = $Product_Name;
   	$_SESSION['success'] = "You have registerd the product in Brand360";
-    chdir('C:\Users\Niranjan\PycharmProjects\Amazon_review_scraper\amazon_reviews');
+     chdir('executing_crawler');
     shell_exec('scrapy crawl amazon_scrapper');
-    $command = escapeshellcmd('python C:\Users\Niranjan\PycharmProjects\Amazon_review_scraper\amazon_reviews\amazon_nlp_model.py "' .$Product_Name.'"');
+    $command = escapeshellcmd('python calling_nlp_model "' .$Product_Name.'"');
     $output = shell_exec($command);
-    $twitter_command = escapeshellcmd('python C:\Users\Niranjan\PycharmProjects\Amazon_review_scraper\amazon_reviews\twitter.py "' .$Product_Name.'" "' .$Twitter_Hashtags.'"');
+    $twitter_command = escapeshellcmd('python executing_twitter_code "' .$Product_Name.'" "' .$Twitter_Hashtags.'"');
     $twitter_output = shell_exec($twitter_command);
   	header('location: index.php');
   }
