@@ -9,8 +9,8 @@ from transformers import TFAutoModelForSequenceClassification
 from scipy.special import softmax
 import mysql.connector
 
-consumer_api_key = 'JArVU99NJnczheSQKPFL2OV62'
-consumer_api_secret = '6shMSl0XHx1FGHdG5xn2bAi11wziILmmDI8477GacNkZbqGKk6'
+consumer_api_key = 'api_key'
+consumer_api_secret = 'api_scret_key'
 
 auth = tw.OAuthHandler(consumer_api_key, consumer_api_secret)
 api = tw.API(auth, wait_on_rate_limit=True)
@@ -23,7 +23,7 @@ tweets = tw.Cursor(api.search_tweets,
                    result_type="recent"
                    ).items(200)
 
-mydb = mysql.connector.connect(host='localhost', user='root', passwd='', database='sentimental_analysisdb')
+mydb = mysql.connector.connect(host='localhost', user='root', passwd='', database='db_name')
 curr = mydb.cursor()
 
 # retrieve the tweets
@@ -72,7 +72,7 @@ negative = 0
 neutral = 0
 positive = 0
 
-roberta = "cardiffnlp/twitter-roberta-base-sentiment"  # downloading the pre trained model from hugging face website
+roberta = "cardiffnlp/twitter-roberta-base-sentiment"  
 model = AutoModelForSequenceClassification.from_pretrained(roberta)
 tokenizer = AutoTokenizer.from_pretrained(roberta)
 labels = ['Negative', 'Neutral', 'Positive']
