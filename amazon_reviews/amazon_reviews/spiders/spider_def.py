@@ -6,7 +6,7 @@ import mysql.connector
 import sys
 # this class inherited from scrapy.spider
 class AmazonSpider(scrapy.Spider):
-    mydb = mysql.connector.connect(host='localhost', user='root', passwd='', database='sentimental_analysisdb')
+    mydb = mysql.connector.connect(host='localhost', user='root', passwd='', database=db_name')
     curr = mydb.cursor()
 
     query = curr.execute("""select a.Amazon_product_link as amazon_prod_link from (select id, Amazon_product_link from products where id like (select max(id) as currDT from products))a;""")
@@ -16,8 +16,6 @@ class AmazonSpider(scrapy.Spider):
     print(url)
 
     name = "amazon_scrapper"
-    # start_urls = [
-    #     'https://www.amazon.co.uk/product-reviews/B08V1CSJXZ/ref=cm_cr_othr_d_show_all_btm?ie=UTF8&reviewerType=all_reviews']
     start_urls = [str(url)]
 
     print(start_urls)
