@@ -16,7 +16,7 @@ class AmazonReviewsPipeline:
             host='localhost',
             user='root',
             passwd='',
-            database='sentimental_analysisdb'
+            database='db_name'
         )
         self.curr = self.conn.cursor()
 
