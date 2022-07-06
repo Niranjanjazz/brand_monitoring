@@ -8,15 +8,12 @@ import sys
 # product_name = sys.argv[1]
 # urls = sys.argv[1]
 # print(url)
-urls = 'https://www.amazon.co.uk/product-reviews/B08V1CSJXZ/ref=cm_cr_othr_d_show_all_btm?ie=UTF8&reviewerType=all_reviews'
-os.chdir('C:\\Users\\Niranjan\\PycharmProjects\\Amazon_review_scraper\\amazon_reviews')
-cmd =['scrapy','crawl','amazon_scrapper']
-subprocess.call(cmd)
 
-# def print_hi(name):
-#     # Use a breakpoint in the code line below to debug your script.
-#     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-#
+
+def print_hi(name):
+    # Use a breakpoint in the code line below to debug your script.
+    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+
 #
 # # Press the green button in the gutter to run the script.
 # if __name__ == '__main__':
