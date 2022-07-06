@@ -3,10 +3,10 @@ from transformers import AutoModelForSequenceClassification
 from scipy.special import softmax
 import mysql.connector
 import sys
-mydb = mysql.connector.connect(host='localhost', user='root', passwd='', database='sentimental_analysisdb')
+mydb = mysql.connector.connect(host='localhost', user='root', passwd='', database='db_name')
 curr = mydb.cursor()
 
-roberta = "cardiffnlp/twitter-roberta-base-sentiment"  # downloading the pre trained model from hugging face website
+roberta = "cardiffnlp/twitter-roberta-base-sentiment"  
 model = AutoModelForSequenceClassification.from_pretrained(roberta)
 tokenizer = AutoTokenizer.from_pretrained(roberta)
 labels = ['Negative', 'Neutral', 'Positive']
